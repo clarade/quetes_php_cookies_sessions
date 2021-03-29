@@ -2,7 +2,6 @@
 <?php require 'inc/head.php'; ?>
 <?php
 
-var_dump($_SESSION['cart']);
 
 if (isset($_GET['add_to_cart'])) {
     // checking in the url if one of the cookies have been added
@@ -10,17 +9,14 @@ if (isset($_GET['add_to_cart'])) {
         $id = $_GET['add_to_cart'];
         $cookie = $catalog[$id];
         $_SESSION['cart'][$id] = $cookie;
-        // pushing cookie value to $_SESSION['cart] array with additionnal []
+        // pushing cookie value to $_SESSION['cart'] array with additionnal []
         header('Location: index.php');
     } else {
         header('Location: login.php');
     }
 }
-
-
-
-
 ?>
+
 <section class="cookies container-fluid">
     <div class="row">
         <?php foreach ($catalog as $id => $cookie) { ?>
