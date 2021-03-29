@@ -1,4 +1,18 @@
-<?php require 'inc/head.php'; ?>
+<?php require 'inc/head.php';
+
+if (isset($_POST['loginname'])) {
+    $_SESSION['loginname'] = $_POST['loginname'];
+    header('Location: index.php');
+    // if username exists, redirect to index.php page
+}
+if (isset($_SESSION['loginname'])) {
+    header('Location: index.php');
+    // if user is already logged, redirect to index.php page
+}
+
+
+?>
+
 <div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -7,7 +21,7 @@
                     <strong> Sign in to continue</strong>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="/handleLogin.php" method="POST">
+                    <form role="form" action="#" method="POST">
                         <fieldset>
                             <div class="row">
                                 <div class="center-block">
