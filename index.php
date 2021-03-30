@@ -1,20 +1,27 @@
 <?php require 'inc/data/products.php'; ?>
 <?php require 'inc/head.php'; ?>
 <?php
-
-
+var_dump($_SESSION['cart']);
 if (isset($_GET['add_to_cart'])) {
     // checking in the url if one of the cookies have been added
     if (isset($_SESSION['loginname'])) {
         $id = $_GET['add_to_cart'];
         $cookie = $catalog[$id];
-        $_SESSION['cart'][$id] = $cookie;
-        // pushing cookie value to $_SESSION['cart'] array with additionnal []
+        if (array_key_exists($id, $_SESSION['cart'])) {
+            // if it already exists, increment
+            $_SESSION['cart'][$id]['quantity']++;
+        } else {
+            $cookie['quantity'] = 1;
+            // pushing  a new value in $cookie array initialized as 1, with quantity key name
+            $_SESSION['cart'][$id] = $cookie;
+            // pushing cookie value to $_SESSION['cart'] array with additionnal []
+        }
         header('Location: index.php');
     } else {
         header('Location: login.php');
     }
 }
+
 ?>
 
 <section class="cookies container-fluid">

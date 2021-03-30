@@ -22,6 +22,16 @@ if (!isset($_SESSION['loginname'])) {
                     </h3>
                     <p><?= $item['description']; ?>
                     </p>
+                    <p><?= $item['quantity']; ?>
+                    </p>
+                    <a href="increment.php?id=<?= $id; ?>"
+                        class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                    <a href="decrement.php?id=<?= $id; ?>"
+                        class="btn btn-primary">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </a>
                 </figcaption>
             </figure>
         </div>
